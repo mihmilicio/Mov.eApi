@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Move.Data;
 using Move.Models;
@@ -10,8 +11,7 @@ namespace Move.Controllers
     public class MovieController : ControllerBase
     {
         private readonly DataContext _context;
-
-        //Construtor
+        
         public MovieController(DataContext context) => _context = context;
         
         
@@ -29,6 +29,19 @@ namespace Move.Controllers
             }
             
             return Created("", movie);
+        }
+
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            try
+            {
+                return Ok(_context.Movie.ToList());
+            }
+            catch (Exception e)
+            {
+                return BadRequest();
+            }
         }
     }
 }
