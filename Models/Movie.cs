@@ -6,8 +6,7 @@ namespace Move.Models
         public string Name { get; set;  }
         public string Synopsis { get; set; }
         public string Year { get; set;  }
-        public int Duration { get; set; }
-        public string PhotoUrl { get; set; }
-        public decimal Rating { get; set; }
+        public int? Duration { get; set; }
+        public decimal? Rating { get; set; }
     }
 }
